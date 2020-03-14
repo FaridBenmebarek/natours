@@ -1,0 +1,45 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // 1rem value = 10px = 62.5% (16px base = 100%)
+    font-size: 62.5%;
+
+    // Pour éviter les conflis, placer la plus grand valeur en début quand il y a des "max"-width
+    @include respond(tab-land) {
+        font-size: 56.25%; //1rem = 9px, 9/16=56.25%
+    }
+
+    @include respond(tab-port) {
+        font-size: 50%; //1rem = 8px, 8/16=50%
+    }
+
+    // @include respond(phone) {
+    //     font-size: 40%;
+    // }
+
+    //Pour le "min"-width, tout ce qui est au dessus de 1800px
+    @include respond(big-desktop) {
+        font-size: 75%; //1rem = 12px, 12/16=75%
+    }
+
+}
+
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
+}
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
